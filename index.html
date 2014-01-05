@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lame ecards by james</title>
+    <link href="/sandbox/ecards/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/sandbox/ecards/css/default.css">
+    <!--<script data-main="/sandbox/ecards/app/main" src="/sandbox/ecards/libs/require-2.1.9.min.js"></script>-->
+    <script src="/sandbox/ecards/libs/jquery-2.0.3.min.js"></script>
+    <script src="/sandbox/ecards/libs/underscore-1.5.2.min.js"></script>
+    <script src="/sandbox/ecards/libs/backbone-1.1.0.min.js"></script>
+    <script src="/sandbox/ecards/libs/bootstrap.min.js"></script>
+    <script src="/sandbox/ecards/app/main.js"></script>
+</head>
+<body>
+
+    <div id="wrapper" class="container"></div>
+    
+    <script type="text/html" id="navigation-template">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li id="nav-recipient" class="active"><a href="">my cards</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/sandbox/ecards/about">about</a></li>
+                        <li><a href="http://github.com">source</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </script>
+    
+    <script type="text/html" id="recipient-template">        
+        
+    </script>
+
+    <script type="text/html" id="card-template">
+        <!-- Preview Cards -->
+        <div id="card<%= card.get("cardId") %>" class="card col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-4 col-lg-3">
+            <div class="content panel panel-primary" data-toggle="modal" data-target="#cardModal<%= card.get("cardId") %>">
+                <div class="panel-heading"><%= card.get("title") %></div>
+                <div class="panel-body">
+                    <% if(card.get("picture") != "") { %>
+                        <a title="<%= card.get("hovermsg") %>">
+                            <img class="img-responsive img-thumbnail" src="/sandbox/ecards/data/<%= card.get("picture") %>" />
+                        </a>
+                    <% } %>
+                    <p>
+                        <%= card.get("message") %>
+                    </p>
+                </div>
+                <div class="panel-footer align-right">
+                    <%= card.get("hdate") %>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display Card -->
+        <div class="modal fade" id="cardModal<%= card.get("cardId") %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"><%= card.get("title") %></h4>
+                    </div>
+                        <div class="modal-body">
+                            <% if(card.get("picture") != "") { %>
+                                <a title="<%= card.get("hovermsg") %>">
+                                    <img class="img-responsive img-thumbnail" src="/sandbox/ecards/data/<%= card.get("picture") %>" />
+                                </a>
+                            <% } %>
+                            <%= card.get("message") %>
+                        </div>
+                    <div class="modal-footer">
+                        <span class="pull-left"><%= card.get("date") %></span>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </script>
+
+    <script type="text/html" id="about">
+        <h1>About</h1>
+        <p>As cheesy as it is, this app solves a few problems.</p>
+        <ul>
+            <li>I wanted to let people know they are thought of.</li>
+            <li>Cards get stored or trashed and never seen again.</li>
+            <li>Ecard websites suck or blast people with ads.</li>
+        </ul>
+        <p>
+        I was on a long drive around Christmas time and putting thought into the idea of 
+        gift giving. I also wanted to make a serious effort to do things, no matter how small, 
+        for people's birthdays. As per usual, the radio rocked classical tunes from the public 
+        radio station. They played the entirety of <a href="http://en.wikipedia.org/wiki/Enigma_Variations">The Enigma Variations by 
+        Edward Elgar</a>. The piece is what got my gears turning.
+        </p>
+        <p>
+        Each movement of the piece is dedicated to someone he considered a friend. I thought 
+        man that would be cool if I was artistic, and did artistic things for people. I
+        am not artistic. To be honest I'm not even a good programmer, but this could be a
+        fun project. Might make someone smile. So I look a little cheesy, but if that's the worst that
+        can happen why wouldn't I take this one on.
+        </p>
+        <p>
+        So far I can say I've learned a lot from it too. This project is the first time I've used the
+        Slim framework. It's the most advanced Backbone.js project I've put together. This as a
+        win-win. Thanks for playing along.
+        </p>
+    </script>
+
+    <script>
+function goBack()
+  {
+  window.history.back()
+  }
+</script>
+
+</body>
+</html>
