@@ -22,15 +22,11 @@ var Card = Backbone.Model.extend({
         return '/sandbox/ecards/api/' + this.get('recipient') + '/' + this.get('cardId');
     },
     generateDate: function () {
-        var months = ["January", "February", "March", "April", "May", "June",
+        var months = ["undefined", "January", "February", "March", "April", "May", "June",
                       "July", "August", "September", "October", "November", "December"];
-
-        //var now = new Date();
-        var happened = new Date(this.get('date'));
-        var year = happened.getFullYear();
-        var month = months[happened.getMonth()];
-        var date = happened.getDate();
-        this.set('hdate', month + " " + date + ", " + year);
+        var numbers = this.get('date').split('-');
+        var month = months[parseInt(numbers[1], 10)];
+        this.set('hdate', month + " " + parseInt(numbers[2], 10) + ", " + numbers[0]);
     }
 });
 
