@@ -51,9 +51,10 @@
             <div class="content panel panel-primary" data-toggle="modal" data-target="#cardModal<%= card.get("cardId") %>">
                 <div class="panel-heading"><%= card.get("title") %></div>
                 <div class="panel-body">
+
                     <% if(card.get("picture") != "") { %>
                         <a title="<%= card.get("hovermsg") %>">
-                            <img class="img-responsive img-thumbnail" src="/sandbox/ecards/data/<%= card.get("picture") %>" />
+                            <img class="img-responsive img-thumbnail" src="<%= window.location.href.slice(0,window.location.href.lastIndexOf('/')+1) %>data/<%= card.get("picture") %>" />
                         </a>
                     <% } %>
                     <p>
@@ -77,7 +78,7 @@
                         <div class="modal-body">
                             <% if(card.get("picture") != "") { %>
                                 <a title="<%= card.get("hovermsg") %>">
-                                    <img class="img-responsive img-thumbnail" src="/sandbox/ecards/data/<%= card.get("picture") %>" />
+                                    <img class="img-responsive img-thumbnail" src="<%= window.location.href.slice(0,window.location.href.lastIndexOf('/')+1) %>data/<%= card.get("picture") %>" />
                                 </a>
                             <% } %>
                             <%= card.get("message") %>

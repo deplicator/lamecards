@@ -8,7 +8,7 @@ $db = new PDO($DB_PDO, $DB_USER, $DB_PASS);
 
 $app->get('/:name', function($name) use ($app, $db) {
     $app->response()->header('Content-Type', 'application/json');
-    $sql = "SELECT * from `occasions` WHERE `name` = '$name'";
+    $sql = "SELECT * from `occasions` WHERE `name` = '$name' ORDER BY 'date'";
     $STH = $db->query($sql);
     $STH->setFetchMode(PDO::FETCH_OBJ);
     $result = [];

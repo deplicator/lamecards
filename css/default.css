@@ -73,3 +73,7 @@ html, body {
 .align-right {
     text-align: right;
 }
+
+.card {
+    height: 400px;
+}
